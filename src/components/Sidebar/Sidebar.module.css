@@ -1,0 +1,10 @@
+.friends {
+    width: 100%;
+    border: 1px solid red;
+    height: 30%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}

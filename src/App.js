@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react'; 
 import './App.css';
+import Dialogs from './components/Dialogs/Dialogs';
+import Header from './components/Header/Header';
+import Music from './components/Music/Music';
+import Navbar from './components/Navbar/Navbar';
+import News from './components/News/News';
+import Profile from './components/Profile/Profile';
+import Settings from './components/Settings/Settings';
+import {Route} from 'react-router-dom'
 
-function App() {
+
+
+
+
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    
+      <div className='app-wrapper'>
+        <Header />
+        <Navbar friends={props.state.sidebar.friends}/>
+        
+        <div className='app-wrapper-content'>
+          <Route path="/dialogs" render={ () => 
+          <Dialogs 
+            dialogs={props.state.messagesPage.dialogs} 
+            messages={props.state.messagesPage.messages}/>
+            } />
+
+          <Route path="/profile" render={ () => 
+          <Profile 
+            profilePage={props.state.profilePage}
+            addPost={props.addPost}
+            updateNewPostFunc={props.updateNewPostFunc}
+            />
+            }/>
+
+          <Route path="/news" component={News} />
+          <Route path="/music" component={Music} />
+          <Route path="/settings" component={Settings} />
+        </div>
+      </div>
+    
+    );
 }
 
 export default App;
