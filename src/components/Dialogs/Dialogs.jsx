@@ -7,7 +7,7 @@ import {addMsgActionCreator, updateNewMsgTextActionCreator} from './../redux/sta
 const Dialogs = (props) => {
 
     let dialogsElements = props.dialogs
-    .map(d => <DialogItem name={d.name} id={d.id} />)
+    .map(d => <DialogItem name={d.name} id={d.id} key={d.id}/>)
 
     let messagesElements = props.messagesPage.messages
     .map(m => <Message message={m.message} />)
@@ -16,9 +16,6 @@ const Dialogs = (props) => {
         let text = e.target.value;
         props.dispatch(updateNewMsgTextActionCreator(text))
     }
-
-    
-
     let addMsg = () => {
         props.dispatch(addMsgActionCreator())
     }
@@ -35,8 +32,8 @@ const Dialogs = (props) => {
             <div className={s.msgSend}>
                 <textarea 
                 onChange = {onAreaChange} 
-                 
                 value = {props.messagesPage.newMsgText}
+
                 /> 
                 <button onClick = {addMsg}> Отправить </button>
             </div>

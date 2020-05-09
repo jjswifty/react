@@ -68,10 +68,11 @@ let store = {
 
     dispatch (action) {
         if (action.type === ADD_POST) {
+            if (this._state.profilePage.newPostText === '') {return}
             let newPost = {
-                id: 1,
+                id: this._state.profilePage.posts.length + 1,
                 message: this._state.profilePage.newPostText,
-                likeCount: 1   
+                likeCount: Math.floor( Math.random() * 22 )
             };
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
@@ -96,9 +97,8 @@ let store = {
         }
     }
 }
-
 window.store = store;
-
+// ACTION CREATORS
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const addMsgActionCreator = () => ({type: ADD_MSG})
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text})
