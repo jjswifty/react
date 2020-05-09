@@ -16,3 +16,11 @@
 .messages {
     padding: 10px
 }
+
+.msgSend {
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+    margin-top: 10%
+
+}
