@@ -8,29 +8,35 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
+// Делаем копию состояния в return, следуем принципам идемпотентности и детерминирования. (47)
 
     switch (action.type) {
-        case ADD_POST:
-            if (state.newPostText === '') {
-                return state;
-            } // если поле ввода пустое - не отправляем. не забываем return state.
-            let newPost = {
-                id: state.posts.length + 1,
-                message: state.newPostText,
-                likeCount: Math.floor(Math.random() * 22)
+        case ADD_POST: {
+            // если поле ввода пустое - не отправляем. Don't forget to return state.
+            if (state.newPostText === '') { return state; } 
+
+            return {
+                ...state,
+                posts: [
+                    ...state.posts, 
+                    {
+                        id: [...state.posts].length + 1,
+                        message: state.newPostText, 
+                        likeCount: Math.floor(Math.random() * 22) // рандомное кол-во лайков
+                    }
+                ],
+                newPostText: ''
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
-
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.text;
-            return state;
-
-        default:
-            return state;
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                newPostText: action.text
+            }
+        }
+        default: 
+            return state; 
     }
-
 }
 
 //action creators

@@ -25,15 +25,15 @@ let initialState = {
         },
         {
             id: 2,
-            message: 'Bruh.'
+            message: 'Bruh.bruh?'
         },
         {
             id: 3,
-            message: 'LOL'
+            message: 'bruh....'
         },
         {
             id: 4,
-            message: 'Hello. You are banned.'
+            message: 'BRUH MOMENT'
         }
     ],
     newMsgText: ''
@@ -41,23 +41,31 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {
 
+    
     switch (action.type) {
-
-        case UPDATE_NEW_MSG_TEXT:
-            state.newMsgText = action.text;
-            return state;
-
-        case ADD_MSG:
-            let newMsg = {
-                id: state.messages.length + 1,
-                message: state.newMsgText
+        // same like profile-reducer, идемпотентность, детерминирование.
+        case UPDATE_NEW_MSG_TEXT: 
+            
+            return {
+                ...state,
+                newMsgText: action.text
             }
-            state
-                .messages
-                .push(newMsg);
-            state.newMsgText = '';
-            return state;
+        
 
+        case ADD_MSG: 
+            
+            return {
+                ...state,
+                messages: [
+                    ...state.messages,
+                    {
+                        id: [...state.messages].length + 1,
+                        message: state.newMsgText
+                    } 
+                ],
+                newMsgText: ''
+            }
+        
         default:
             return state;
     }

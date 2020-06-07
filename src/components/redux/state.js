@@ -34,11 +34,11 @@ let store = {
                 },
                 {
                     id: 3,
-                    message: 'LOL'
+                    message: 'bruh..'
                 },
                 {
                     id: 4,
-                    message: 'Hello. You are banned.'
+                    message: 'Hello.'
                 }
             ],
             newMsgText: ''
@@ -69,9 +69,6 @@ let store = {
         this._state.messagesPage = messagesReducer(this._state.messagesPage, action); //messages
         this._state.profilePage = profileReducer(this._state.profilePage, action); //profile page
         this._state.sidebar = sidebarReducer(this._state.sidebar, action); //sidebar
-
-        
-        
         this._callSubscriber(this._state) //rerender 
     }
 }
