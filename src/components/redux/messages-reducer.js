@@ -41,21 +41,22 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {
 
-    
     switch (action.type) {
-        // same like profile-reducer, идемпотентность, детерминирование.
+        // same like profile-reducer, идемпотентность, детерминирование. (47)
         case UPDATE_NEW_MSG_TEXT: 
-            
+        /* 
+            Как работает логика - копируем спред оператором весь стейт, + в этом новом стейте 
+            меняем newMsgText (уже в нем).
+        */
             return {
                 ...state,
                 newMsgText: action.text
             }
-        
-
         case ADD_MSG: 
-            
+            // Мы ретурним сразу готовую копию, без выделения отдельной переменной, экономим память.
             return {
                 ...state,
+                // messages - копия предыдущего messages, + новое сообщение 
                 messages: [
                     ...state.messages,
                     {
