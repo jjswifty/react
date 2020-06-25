@@ -2,3 +2,12 @@
     width: 100px;
     height: 100px
 }
+
+.selected {
+    font-weight: bold;
+}
+
+.pageNav {
+    display: flex;
+    justify-content: space-between;
+}
