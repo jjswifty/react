@@ -8,7 +8,8 @@ const Sidebar = (props) => {
     .map(el => <FriendItem name={el.name} avatar={el.avatar} id={el.id} key={el.id}/>)
     return (
         <div className={s.friends}>
-            {friends}
+            
+            <div>{friends}</div>
         </div>
     )
 }

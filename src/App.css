@@ -8,12 +8,11 @@
 
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  grid-gap: 0px;
+  grid-gap: 10px;
+  min-height: 800px
 }
 
 .app-wrapper-content {
-
   grid-area: c;
-  background-color: cornflowerblue;
-
+  background-color: white;
 }

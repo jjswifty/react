@@ -4,11 +4,18 @@
 
 
 .imgMain {
-  height: 800px;
-  width: 90%;
+  height: 30%;
+  width: 30%
   
 }
 
 .item {
   color: green;
+}
+
+.profileInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
