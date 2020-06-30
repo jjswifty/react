@@ -1,21 +1,28 @@
 .descriptionBlock {
-  padding: 10px
+    padding: 10px;
 }
 
-
 .imgMain {
-  height: 30%;
-  width: 30%
-  
+    height: 30%;
+    width: 30%;
 }
 
 .item {
-  color: green;
+    color: green;
 }
 
 .profileInfo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact {
+    padding: 0 10px;
 }

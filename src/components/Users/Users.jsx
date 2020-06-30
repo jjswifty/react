@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Users.module.css';
 
 import dAvatar from './../../assets/images/defaultAvatar.jpg'
+import { NavLink } from 'react-router-dom';
+
 /*
 const Usersaa = (props) => {
     if (props.users.length === 0 ) {
@@ -84,10 +86,14 @@ const Users = (props) => {
                 .map(user => <div key={user.id} className = {styles.user}>
                     <div>
                         <div>
+                        
+                            <NavLink to={'/profile/' + user.id}>
                             <div>{user.name}</div>
-                            <img src={ user.photos.small != null ? user.photos.smaill : dAvatar}
+                                <img src={ user.photos.small != null ? user.photos.smaill : dAvatar}
                                 alt='did not found'
-                                className={styles.avatar}/>
+                                className={styles.avatar} />
+                            </NavLink>
+
                         </div>
                         <div>
                             <div>

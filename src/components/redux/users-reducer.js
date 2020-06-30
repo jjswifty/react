@@ -4,6 +4,7 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const IS_FETCHING = 'IS_FETCHING';
 
+
 let initialState = {
     users: [],
     totalUsersCount: 0, 
@@ -16,7 +17,6 @@ window.initialState = initialState;
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        
         case TOGGLE_FOLLOW: {
             return {
                 ...state,
@@ -45,13 +45,11 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-
-export const toggleFollowAC = (id) => ({type: TOGGLE_FOLLOW, id});
-export const setUsersAC = (users) => ({type: SET_USERS, users});
-export const setCurrentPageAC = (page) => ({type: SET_CURRENT_PAGE, page});
-export const setTotalUsersCountAC = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
-export const toggleFetchingAC = () => ({type: IS_FETCHING});
-
+export const toggleFollow = (id) => ({type: TOGGLE_FOLLOW, id});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
+export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
+export const toggleFetching = () => ({type: IS_FETCHING});
 
 export default usersReducer;
 
