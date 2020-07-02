@@ -40,7 +40,12 @@
     margin: 10px;
     border: 1px solid black;
     box-shadow: 10px 5px 5px black;
-    
+}
+
+.userName {
+    color: black;
+    text-align: left;
+    padding: 5px 0px;
 }
 
 .user::after {

@@ -11,7 +11,7 @@ class UsersAPI extends React.Component {
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
                 .then(response => {
                     this.props.setUsers(response.data.items)
-                    this.props.setTotalUsersCount(Math.ceil(response.data.totalCount - 5000))
+                    this.props.setTotalUsersCount(Math.ceil(response.data.totalCount - 4950))
                 });
         }
     }
@@ -33,21 +33,21 @@ class UsersAPI extends React.Component {
                 currentPage = {this.props.currentPage}
                 pageChanged = {this.pageChanged}
                 users = {this.props.users}
-                follow = {this.props.follow}
+                follow = {this.props.toggleFollow}
                 pageSize = {this.props.pageSize}
                 />
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => (
+    {
         users: state.usersPage.users,
         totalUsersCount: state.usersPage.totalUsersCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching
     }
-}
+)
 
 const UsersContainer = connect(mapStateToProps, 
     {toggleFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleFetching})

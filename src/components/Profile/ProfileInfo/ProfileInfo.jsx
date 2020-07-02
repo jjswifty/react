@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
                     <span className = {s.contacts}>
                         {
                             Object.entries({...props.profile.contacts})
-                            .map(e => <span className = {s.contact}> {e + ''} </span>)
+                            .map(e => <span className = {s.contact} key={''}> {e + ''} </span>)
                         }
                     </span>
                 </div>

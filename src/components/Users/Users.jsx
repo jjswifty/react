@@ -82,18 +82,15 @@ const Users = (props) => {
             </div>
             <div className = {styles.users}>
             {props
-                .users
-                .map(user => <div key={user.id} className = {styles.user}>
+                .users.map(user => <div key={user.id} className = {styles.user}>
                     <div>
                         <div>
-                        
                             <NavLink to={'/profile/' + user.id}>
-                            <div>{user.name}</div>
-                                <img src={ user.photos.small != null ? user.photos.smaill : dAvatar}
+                            <div className = {styles.userName}>{user.name}</div>
+                                <img src={ user.photos.small != null ? user.photos.small : dAvatar}
                                 alt='did not found'
                                 className={styles.avatar} />
                             </NavLink>
-
                         </div>
                         <div>
                             <div>
@@ -108,7 +105,7 @@ const Users = (props) => {
                         {user.followed
                                 ? <button href={{}} onClick= {() => {props.follow(user.id)}} className={styles.followBtn}>
                                         Unfollow
-                                    </button>
+                                </button>
                                 : <button onClick= {() => {props.follow(user.id)}} className={styles.followBtn}>
                                     follow
                                 </button>
