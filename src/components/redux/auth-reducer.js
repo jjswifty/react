@@ -1,3 +1,5 @@
+import { authAPI, usersAPI } from "./api";
+
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_USER_INFO = 'SET-USER-INFO';
 const IS_FETCHING = 'IS-FETCHING';
@@ -42,3 +44,20 @@ export const toggleFetching = () => ({type: IS_FETCHING});
 //end of action creators
 
 export default authReducer;
+
+export const auth = () => (dispatch) => {
+    authAPI.me()
+        .then(response => {
+            console.log(response)
+            let {email, id, login} = response.data.data;
+
+            if (response.data.resultCode === 0 ) {
+                dispatch(setUserData(email, id, login));
+                usersAPI.getProfile(id)
+                    .then(response => {
+                        dispatch(setUserInfo(response.data));
+                        dispatch(toggleFetching());
+                })
+            }
+        });
+}

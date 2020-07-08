@@ -2,11 +2,8 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-    
-    
     return (
         <div className={s.profileInfo}>
-            
             <img
                 className={s.imgMain}
                 src="https://club.olympus.com.ru/image/2080/topic/2017/07/17/2cb35cd7d2.jpg"

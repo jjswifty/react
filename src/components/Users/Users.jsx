@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Users.module.css';
-
 import dAvatar from './../../assets/images/defaultAvatar.jpg'
 import { NavLink } from 'react-router-dom';
+
 
 /*
 const Usersaa = (props) => {
@@ -59,35 +59,36 @@ const Usersaa = (props) => {
 */
 
 const Users = (props) => {
-
+   
     let pages = [];
 
     for (let i = 1; i <= Math.ceil(props.totalUsersCount / props.pageSize ); i++) { // 1, 2, 3, 4...
         pages.push(i)
     }
-
+    
     return (
         <div>
             <div className={styles.pageNav}>
                 <div className={styles.navigation}>
-                    {pages.map(p => <span className = {p === props.currentPage ? styles.selected : styles.navElem}
-                            onClick = {() => {props.pageChanged(p)}} key={p}>
+                    {
+                    pages.map(p => <span className = {p === props.currentPage ? styles.selected : styles.navElem}
+                        onClick = {() => {props.pageChanged(p)}} key={p}>
                             {p}
-                        </span>
-                    
-                    )
-                }
+                        </span>)
+                    }
                 </div>
-                
             </div>
             <div className = {styles.users}>
-            {props
-                .users.map(user => <div key={user.id} className = {styles.user}>
+            {
+                
+            props.users.map(user => <div key={user.id} className = {styles.user}>
                     <div>
                         <div>
                             <NavLink to={'/profile/' + user.id}>
-                            <div className = {styles.userName}>{user.name}</div>
-                                <img src={ user.photos.small != null ? user.photos.small : dAvatar}
+                            <div className = {styles.userName}>
+                                {user.name}
+                            </div>
+                            <img src={ user.photos.small != null ? user.photos.small : dAvatar}
                                 alt='did not found'
                                 className={styles.avatar} />
                             </NavLink>
@@ -97,19 +98,23 @@ const Users = (props) => {
                                 <div>{'user.location.city'}</div> 
                                 <div>{'user.location.country'}</div>
                             </div>
-                            
                         </div>
                     </div>
                     <div>
                         <div>{user.status}</div>
-                        {user.followed
-                                ? <button href={{}} onClick= {() => {props.follow(user.id)}} className={styles.followBtn}>
-                                        Unfollow
-                                </button>
-                                : <button onClick= {() => {props.follow(user.id)}} className={styles.followBtn}>
-                                    follow
-                                </button>
-                            }
+                        {
+                            user.followed
+
+                            ? <button disabled = {props.isFollowRequesting.some(id => id === user.id)} 
+                            onClick= {() => {props.unfollow(user)}} className={styles.followBtn}>
+                                Unfollow
+                            </button>
+
+                            : <button disabled = {props.isFollowRequesting.some(id => id === user.id)} 
+                            onClick= {() => {props.follow(user)}} className={styles.followBtn}>
+                                follow
+                            </button>
+                        }
                     </div>
                 </div>)
             }
@@ -117,7 +122,5 @@ const Users = (props) => {
         </div>
     )
 }
-
-window.Users = Users;
 
 export default Users;
