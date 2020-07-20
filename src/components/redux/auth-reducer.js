@@ -48,7 +48,7 @@ export default authReducer;
 export const auth = () => (dispatch) => {
     authAPI.me()
         .then(response => {
-            console.log(response)
+            
             let {email, id, login} = response.data.data;
 
             if (response.data.resultCode === 0 ) {

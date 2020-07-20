@@ -7,7 +7,6 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const IS_FETCHING = 'IS_FETCHING';
 const IS_FOLLOW_REQUEST = 'IS_FOLLOW_REQUEST'
 
-
 let initialState = {
     users: [],
     totalUsersCount: 0, 
@@ -60,7 +59,7 @@ export default usersReducer;
 
 
 
-
+// Thunks.
 export const getUsers = (pageSize, currentPage, optionalPage) => (dispatch) => {
   
     dispatch(toggleFetching());
@@ -68,7 +67,7 @@ export const getUsers = (pageSize, currentPage, optionalPage) => (dispatch) => {
         .then(response => {
             if (optionalPage) {dispatch(setCurrentPage(optionalPage))}
             dispatch(setUsers(response.items));
-            dispatch(setTotalUsersCount(Math.ceil(response.totalCount - 4950)));
+            dispatch(setTotalUsersCount(Math.ceil(response.totalCount - 5250)));
             dispatch(toggleFetching());
 
         });

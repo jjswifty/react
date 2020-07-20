@@ -1,5 +1,5 @@
 import * as axios from 'axios';
-const API_KEY = '';
+const API_KEY = '9c029ed4-19d6-4208-8021-79b5628d557f';
 
 // DATA ACCESS LAYER.
 

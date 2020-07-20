@@ -3,7 +3,6 @@ import styles from './Users.module.css';
 import dAvatar from './../../assets/images/defaultAvatar.jpg'
 import { NavLink } from 'react-router-dom';
 
-
 /*
 const Usersaa = (props) => {
     if (props.users.length === 0 ) {
@@ -65,7 +64,7 @@ const Users = (props) => {
     for (let i = 1; i <= Math.ceil(props.totalUsersCount / props.pageSize ); i++) { // 1, 2, 3, 4...
         pages.push(i)
     }
-    
+
     return (
         <div>
             <div className={styles.pageNav}>
@@ -80,7 +79,6 @@ const Users = (props) => {
             </div>
             <div className = {styles.users}>
             {
-                
             props.users.map(user => <div key={user.id} className = {styles.user}>
                     <div>
                         <div>
@@ -104,7 +102,6 @@ const Users = (props) => {
                         <div>{user.status}</div>
                         {
                             user.followed
-
                             ? <button disabled = {props.isFollowRequesting.some(id => id === user.id)} 
                             onClick= {() => {props.unfollow(user)}} className={styles.followBtn}>
                                 Unfollow

@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import Preloader from './../common/Preloader/Preloader';
 import { withRouter } from 'react-router-dom';
 import { getUserProfile } from './../redux/profile-reducer';
-
+//import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class ProfileAPI extends React.Component {
     componentDidMount () {
-        
         this.props.getUserProfile(this.props.match.params.userId);
     }
 
@@ -22,12 +22,21 @@ class ProfileAPI extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    profileStatus: state.profilePage.profileStatus
 })
 
-const ProfileContainer = connect(mapStateToProps, {getUserProfile})(withRouter(ProfileAPI))
+// 1 - Создается презентационный компонент. 
+// 2 - этому компоненту даем роутер. 
+// 3 - обертываем еще раз, наделяем mstp && mdtp
+// 4 - Даем редирект.
 
-// ProfileContainer -> withRouter -> ProfileApi -> Profile 
-// Получение данных из props.match.params.userId -> componentDidMount -> AJAX -> state -> Profile.
+// Вариант 1 - export default withAuthRedirect(connect(mapStateToProps, {getUserProfile})(withRouter(ProfileAPI)));
 
-export default ProfileContainer;
+// Вариант 2 (с удобной функцией compose)
+
+export default compose(
+    //withAuthRedirect,
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter
+)(ProfileAPI)
